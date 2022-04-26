@@ -2,6 +2,8 @@ import { View, Text, ImageBackground, Image } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "tailwind-react-native-classnames";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import { GOOGLE_MAPS_APIKEY } from "@env";
 
 import { assets, FONTS, COLORS, SIZES } from "../constants";
 import NavCard from "../components/NavCard";
@@ -23,8 +25,22 @@ const Home = () => {
           <View style={{ top: 0, bottom: 0, right: 0, left: 0 }}>
             <HomeHeader />
             <View style={{ height: 200 }} />
-            <Text style={{color: COLORS.white, paddingVertical: SIZES.font, fontFamily: FONTS.semiBold, textAlign: 'center'}} >Where to today?</Text>
+            <Text
+              style={{
+                color: COLORS.white,
+                paddingVertical: SIZES.font,
+                fontFamily: FONTS.semiBold,
+                textAlign: "center",
+              }}
+            >
+              Where to today?
+            </Text>
             <NavCard />
+            <GooglePlacesAutocomplete 
+                placeholder="Where From?"
+                nearbyPlacesAPI="GooglePlacesSearch"
+                debounce={400}
+            />
           </View>
         </View>
       </SafeAreaView>
