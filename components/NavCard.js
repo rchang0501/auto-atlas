@@ -4,8 +4,11 @@ import tw from "tailwind-react-native-classnames";
 
 import { COLORS, navCardData, FONTS, SIZES, SHADOWS } from "../constants";
 import { Icon } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
 
 const NavCard = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={{ justifyContent: "center", alignItems: "center" }}>
       <FlatList
@@ -14,6 +17,7 @@ const NavCard = () => {
         horizontal
         renderItem={({ item }) => (
           <TouchableOpacity
+          onPress={() => {navigation.navigate(item.screen)}}
             style={[
               tw`p-2 pl-6 pb-8 pt-4 m-2 w-40 bg-gray-300`,
               { borderRadius: SIZES.font },
