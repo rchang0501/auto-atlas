@@ -1,16 +1,20 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import tw from "tailwind-react-native-classnames";
+import Map from "../components/Map";
+import MapView from 'react-native-maps';
 
 import { COLORS } from "../constants";
 
 const Maps = () => {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
-      <View style={{ flex: 1, top: 0, bottom: 0, right: 0, left: 0 }}>
-        <Text>Maps</Text>
+    <View style={{ flex: 1, backgroundColor: COLORS.white }}>
+      <View style={tw`h-1/2`} >
+        <Map />
       </View>
-    </SafeAreaView>
+      <View style={tw`h-1/2`} ></View>
+    </View>
   );
 };
 

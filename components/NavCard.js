@@ -5,9 +5,12 @@ import tw from "tailwind-react-native-classnames";
 import { COLORS, navCardData, FONTS, SIZES, SHADOWS } from "../constants";
 import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
+import { selectOrigin } from "../slices/navSlice";
 
 const NavCard = () => {
   const navigation = useNavigation();
+  const origin = useSelector(selectOrigin);
 
   return (
     <View style={{ justifyContent: "space-between", alignItems: "center" }}>
@@ -17,13 +20,16 @@ const NavCard = () => {
         horizontal
         renderItem={({ item }) => (
           <TouchableOpacity
-          onPress={() => {navigation.navigate(item.screen)}}
+            onPress={() => {
+              navigation.navigate(item.screen);
+            }}
             style={[
               tw`p-2 pl-6 pb-8 pt-4 m-2 w-40 bg-gray-300`,
-              { borderRadius: SIZES.font},
+              { borderRadius: SIZES.font },
             ]}
+            disabled={!origin}
           >
-            <View>
+            <View style={tw`${!origin && "opacity-20"}`}>
               <Image
                 style={{ width: 120, height: 120, resizeMode: "contain" }}
                 source={item.image}

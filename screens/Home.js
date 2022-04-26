@@ -4,12 +4,15 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "tailwind-react-native-classnames";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_APIKEY } from "@env";
-
 import { assets, FONTS, COLORS, SIZES } from "../constants";
 import NavCard from "../components/NavCard";
 import HomeHeader from "../components/HomeHeader";
+import { useDispatch } from "react-redux";
+import { setDestination, setOrigin } from "../slices/navSlice";
 
 const Home = () => {
+  const dispatch = useDispatch();
+
   return (
     <ImageBackground
       source={assets.homeBkg}
@@ -72,8 +75,14 @@ const Home = () => {
                   },
                 }}
                 onPress={(data, details = null) => {
-                  console.log(data);
-                  console.log(details);
+                  dispatch(
+                    setOrigin({
+                      location: details.geometry.location,
+                      description: data.description,
+                    })
+                  );
+
+                  dispatch(setDestination(null));
                 }}
                 fetchDetails={true}
                 returnKeyType={"search"}
