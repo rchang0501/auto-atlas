@@ -2,8 +2,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Provider } from "react-redux";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import "react-native-gesture-handler";
 
-import { Home, Details } from "./screens";
+import { Home, Details, Maps } from "./screens";
 import { store } from "./store";
 
 const Stack = createStackNavigator();
@@ -28,15 +30,18 @@ const App = () => {
   if (!loaded) return null;
 
   return (
-    <Provider store={store} >
+    <Provider store={store}>
       <NavigationContainer theme={theme}>
-        <Stack.Navigator
-          screenOptions={{ headerShown: false }}
-          initialRouteName="Home"
-        >
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Details" component={Details} />
-        </Stack.Navigator>
+        <SafeAreaProvider>
+          <Stack.Navigator
+            screenOptions={{ headerShown: false }}
+            initialRouteName="Home"
+          >
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Details" component={Details} />
+            <Stack.Screen name="Maps" component={Maps} />
+          </Stack.Navigator>
+        </SafeAreaProvider>
       </NavigationContainer>
     </Provider>
   );

@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "tailwind-react-native-classnames";
 
 import { assets, FONTS, COLORS, SIZES } from "../constants";
+import NavCard from "../components/NavCard";
 
 const Header = () => {
   return (
@@ -91,7 +92,8 @@ const Home = () => {
           <View style={{ top: 0, bottom: 0, right: 0, left: 0 }}>
             <Header />
             <View style={{ height: 200 }} />
-            <Text style={{ color: COLORS.white }}>hi</Text>
+            <Text style={{color: COLORS.white, paddingVertical: SIZES.font, paddingHorizontal: SIZES.xxl, fontFamily: FONTS.semiBold}} >Where to today?</Text>
+            <NavCard />
           </View>
         </View>
       </SafeAreaView>
