@@ -9,7 +9,7 @@ const navCardData = [
     },
     {
         id: "456",
-        title: "Find Charging Station", 
+        title: "Find a charging station", 
         image: assets.charging, 
         screen: "Maps", 
     },

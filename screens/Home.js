@@ -24,23 +24,70 @@ const Home = () => {
         <View style={{ flex: 1 }}>
           <View style={{ top: 0, bottom: 0, right: 0, left: 0 }}>
             <HomeHeader />
-            <View style={{ height: 200 }} />
-            <Text
+            <View
               style={{
-                color: COLORS.white,
-                paddingVertical: SIZES.font,
-                fontFamily: FONTS.semiBold,
-                textAlign: "center",
+                alignContent: "center",
+                justifyContent: "center",
+                flexDirection: "row",
               }}
             >
-              Where to today?
-            </Text>
-            <NavCard />
-            <GooglePlacesAutocomplete 
-                placeholder="Where From?"
+              <Image
+                source={assets.modelx}
+                style={{
+                  width: 300,
+                  height: 200,
+                  resizeMode: "contain",
+                }}
+              />
+            </View>
+            <View style={{ paddingHorizontal: 38 }}>
+              <GooglePlacesAutocomplete
+                placeholder="Where are we starting?"
+                textInputProps={{
+                  selectionColor: COLORS.white,
+                  placeholderTextColor: COLORS.white,
+                }}
+                styles={{
+                  container: {
+                    flex: 0,
+                    backgroundColor: "transparent",
+                  },
+                  textInput: {
+                    fontSize: SIZES.font,
+                    fontFamily: FONTS.regular,
+                    backgroundColor: COLORS.translucent,
+                    color: COLORS.white,
+                  },
+                  listView: {
+                    color: COLORS.white,
+                  },
+                  row: {
+                    backgroundColor: "transparent",
+                  },
+                  description: {
+                    color: COLORS.white,
+                  },
+                  separator: {
+                    backgroundColor: "transparent",
+                  },
+                }}
+                onPress={(data, details = null) => {
+                  console.log(data);
+                  console.log(details);
+                }}
+                fetchDetails={true}
+                returnKeyType={"search"}
+                enablePoweredByContainer={false}
+                minLength={2}
+                query={{
+                  key: GOOGLE_MAPS_APIKEY,
+                  language: "en",
+                }}
                 nearbyPlacesAPI="GooglePlacesSearch"
                 debounce={400}
-            />
+              />
+            </View>
+            <NavCard />
           </View>
         </View>
       </SafeAreaView>

@@ -10,7 +10,7 @@ const NavCard = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={{ justifyContent: "center", alignItems: "center" }}>
+    <View style={{ justifyContent: "space-between", alignItems: "center" }}>
       <FlatList
         data={navCardData}
         keyExtractor={(item) => item.id}
@@ -20,7 +20,7 @@ const NavCard = () => {
           onPress={() => {navigation.navigate(item.screen)}}
             style={[
               tw`p-2 pl-6 pb-8 pt-4 m-2 w-40 bg-gray-300`,
-              { borderRadius: SIZES.font },
+              { borderRadius: SIZES.font},
             ]}
           >
             <View>
