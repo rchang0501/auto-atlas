@@ -89,8 +89,8 @@ const Home = () => {
         <View style={{ flex: 1 }}>
           <View style={{ top: 0, bottom: 0, right: 0, left: 0 }}>
             <Header />
-            <View style={{height: 200}} />
-            <Text style={{color: COLORS.white}} >hi</Text>
+            <View style={{ height: 200 }} />
+            <Text style={{ color: COLORS.white }}>hi</Text>
           </View>
         </View>
       </SafeAreaView>
