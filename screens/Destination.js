@@ -1,6 +1,13 @@
-import { View, Text, StyleSheet, Modal } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Modal,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 import React, { useState } from "react";
-import { COLORS, FONTS, SIZES } from "../constants";
+import { COLORS, FONTS, SIZES, SHADOWS } from "../constants";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_APIKEY } from "@env";
 import { useDispatch } from "react-redux";
@@ -8,6 +15,7 @@ import { setDestination } from "../slices/navSlice";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { setModalVisible } from "../slices/navSlice";
+import NavFavsAlt from "../components/NavFavsAlt";
 
 const Destination = () => {
   const dispatch = useDispatch();
@@ -45,6 +53,7 @@ const Destination = () => {
             debounce={400}
           />
         </View>
+        {/* <NavFavsAlt /> */}
       </View>
     </SafeAreaView>
   );

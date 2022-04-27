@@ -6,6 +6,7 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import { GOOGLE_MAPS_APIKEY } from "@env";
 import { assets, FONTS, COLORS, SIZES } from "../constants";
 import NavCard from "../components/NavCard";
+import NavFavs from "../components/NavFavs";
 import HomeHeader from "../components/HomeHeader";
 import { useDispatch } from "react-redux";
 import { setDestination, setOrigin } from "../slices/navSlice";
@@ -58,6 +59,8 @@ const Home = () => {
                       description: data.description,
                     })
                   );
+                  console.log(details.geometry.location);
+                  console.log(data.description);
                   dispatch(setDestination(null));
                 }}
                 fetchDetails={true}
@@ -73,6 +76,10 @@ const Home = () => {
               />
             </View>
             <NavCard />
+            <Text style={{ paddingHorizontal: 42, color: COLORS.white, marginTop: SIZES.small, fontFamily: FONTS.semiBold }}>
+              Quick Start
+            </Text>
+            <NavFavs />
           </View>
         </View>
       </SafeAreaView>

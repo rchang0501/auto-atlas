@@ -28,7 +28,7 @@ const Maps = () => {
           top: 0,
           right: 0,
           left: 0,
-          height: 350,
+          height: 340,
         }}
       >
         <View style={{ flex: 1 }}>
