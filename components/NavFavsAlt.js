@@ -9,6 +9,8 @@ import React from "react";
 import { FONTS, COLORS, SIZES } from "../constants";
 import { Icon } from "react-native-elements";
 import tw from "tailwind-react-native-classnames";
+import { useDispatch } from "react-redux";
+import { setDestination, setModalVisible } from "../slices/navSlice";
 
 const data = [
   {
@@ -17,7 +19,7 @@ const data = [
     name: "Home",
     description: "CN Tower, Toronto, ON",
     destination: {
-      location: { lat: 43.6425657, lng: -79.38705569999999 },
+      location: { lat: 43.6425662, lng: -79.3870568 },
       description: "CN Tower, Front Street West, Toronto, ON, Canada",
     },
   },
@@ -34,48 +36,55 @@ const data = [
 ];
 
 const NavFavsAlt = () => {
+  const dispatch = useDispatch();
+
   return (
-    <View style={{ justifyContent: "space-between" }}>
-      <FlatList
-        data={data}
-        keyExtractor={(item) => item.id}
-        horizontal
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={[
-              tw`flex-row mr-4`,
-              {
-                flex: "row",
-                justifyContent: "center",
-                alignItems: "center",
-                paddingHorizontal: SIZES.small,
-                backgroundColor: COLORS.gray,
-                borderRadius: SIZES.xxl,
-              },
-            ]}
+    <FlatList
+      data={data}
+      keyExtractor={(item) => item.id}
+      horizontal
+      renderItem={({ item }) => (
+        <TouchableOpacity
+          onPress={() => {
+            dispatch(setDestination(item.destination));
+            dispatch(setModalVisible(true));
+          }}
+          style={{
+            marginRight: SIZES.base,
+            backgroundColor: COLORS.gray,
+            paddingHorizontal: SIZES.font,
+            paddingVertical: SIZES.small,
+            borderRadius: SIZES.extraLarge,
+            elevation: 1
+          }}
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
           >
             <Icon
-              style={{ paddingVertical: SIZES.small, paddingEnd: 8 }}
               name={item.icon}
               type="ionicon"
-              color="white"
-              size={SIZES.font}
+              color='white'
+              size={SIZES.small}
+              style={{ marginRight: 6 }}
             />
-            <View>
-              <Text
-                style={{
-                  color: COLORS.white,
-                  fontFamily: FONTS.semiBold,
-                  fontSize: SIZES.font,
-                }}
-              >
-                {item.name}
-              </Text>
-            </View>
-          </TouchableOpacity>
-        )}
-      />
-    </View>
+            <Text
+              style={{
+                fontFamily: FONTS.semiBold,
+                fontSize: SIZES.small,
+                color: COLORS.white
+              }}
+            >
+              {item.name}
+            </Text>
+          </View>
+        </TouchableOpacity>
+      )}
+    />
   );
 };
 

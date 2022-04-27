@@ -4,6 +4,7 @@ export const COLORS = {
   
     white: "#FFF",
     gray: "#d1d5db",
+    black: "#000",
     translucent: 'rgba(52, 52, 52, 0.8)'
   };
   

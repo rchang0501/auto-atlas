@@ -53,7 +53,9 @@ const Destination = () => {
             debounce={400}
           />
         </View>
-        {/* <NavFavsAlt /> */}
+        <View style ={{marginTop: -6}} >
+          <NavFavsAlt />
+        </View>
       </View>
     </SafeAreaView>
   );

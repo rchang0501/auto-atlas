@@ -20,7 +20,7 @@ const data = [
     name: "Home",
     description: "CN Tower, Toronto, ON",
     destination: {
-      location: { lat: 43.6425657, lng: -79.38705569999999 },
+      location: { lat: 43.6425662, lng: -79.3870568 },
       description: "CN Tower, Front Street West, Toronto, ON, Canada",
     },
   },
