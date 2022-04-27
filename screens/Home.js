@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, Image } from "react-native";
+import { View, Text, ImageBackground, Image, StyleSheet } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "tailwind-react-native-classnames";
@@ -45,35 +45,12 @@ const Home = () => {
             </View>
             <View style={{ paddingHorizontal: 38 }}>
               <GooglePlacesAutocomplete
-                placeholder="Where are we starting?"
+                placeholder="Where from?"
                 textInputProps={{
                   selectionColor: COLORS.white,
                   placeholderTextColor: COLORS.white,
                 }}
-                styles={{
-                  container: {
-                    flex: 0,
-                    backgroundColor: "transparent",
-                  },
-                  textInput: {
-                    fontSize: SIZES.font,
-                    fontFamily: FONTS.regular,
-                    backgroundColor: COLORS.translucent,
-                    color: COLORS.white,
-                  },
-                  listView: {
-                    color: COLORS.white,
-                  },
-                  row: {
-                    backgroundColor: "transparent",
-                  },
-                  description: {
-                    color: COLORS.white,
-                  },
-                  separator: {
-                    backgroundColor: "transparent",
-                  },
-                }}
+                styles={toInputBoxStyles}
                 onPress={(data, details = null) => {
                   dispatch(
                     setOrigin({
@@ -81,7 +58,6 @@ const Home = () => {
                       description: data.description,
                     })
                   );
-
                   dispatch(setDestination(null));
                 }}
                 fetchDetails={true}
@@ -105,3 +81,28 @@ const Home = () => {
 };
 
 export default Home;
+
+const toInputBoxStyles = StyleSheet.create({
+  container: {
+    flex: 0,
+    backgroundColor: "transparent",
+  },
+  textInput: {
+    fontSize: SIZES.font,
+    fontFamily: FONTS.regular,
+    backgroundColor: COLORS.translucent,
+    color: COLORS.white,
+  },
+  listView: {
+    color: COLORS.white,
+  },
+  row: {
+    backgroundColor: "transparent",
+  },
+  description: {
+    color: COLORS.white,
+  },
+  separator: {
+    backgroundColor: "transparent",
+  },
+});

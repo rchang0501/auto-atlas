@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "react-native-gesture-handler";
 
-import { Home, Details, Maps } from "./screens";
+import { Home, Maps } from "./screens";
 import { store } from "./store";
 
 const Stack = createStackNavigator();
@@ -38,7 +38,6 @@ const App = () => {
             initialRouteName="Home"
           >
             <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Details" component={Details} />
             <Stack.Screen name="Maps" component={Maps} />
           </Stack.Navigator>
         </SafeAreaProvider>

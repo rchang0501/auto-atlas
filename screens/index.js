@@ -1,5 +1,6 @@
-import Details from "./Details";
 import Home from "./Home";
 import Maps from "./Maps";
+import NavDetails from "./NavDetails";
+import Destination from "./Destination";
 
-export {Home, Details, Maps}
+export {Home, NavDetails, Maps, Destination}
