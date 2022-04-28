@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "tailwind-react-native-classnames";
 import Map from "../components/Map";
+import NavDetailsModal from "../components/NavDetailsModal";
 import Destination from "./Destination";
 import { COLORS, SIZES, FONTS } from "../constants";
 import { useDispatch, useSelector } from "react-redux";
@@ -75,62 +76,10 @@ const Maps = () => {
             },
           ]}
         >
-          <Text style={{ color: COLORS.white }}>Show Details</Text>
+          <Text style={{ color: COLORS.white, fontFamily: FONTS.medium }}>Show Details</Text>
         </TouchableOpacity>
       </View>
-
-      {modalVisible === true && (
-        <View
-          style={{
-            zIndex: 1,
-            position: "absolute",
-            bottom: -50,
-            right: 0,
-            left: 0,
-            height: 320,
-            backgroundColor: COLORS.white,
-            borderRadius: SIZES.medium,
-          }}
-        >
-          <View style={{ padding: SIZES.font }}>
-            <Text
-              style={{
-                textAlign: "center",
-                fontFamily: FONTS.semiBold,
-                fontSize: SIZES.medium,
-                paddingBottom: SIZES.small,
-              }}
-            >
-              Travel Details
-            </Text>
-            <View style={{ height: 130 }} />
-            <View
-              style={{
-                width: "100%",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <TouchableOpacity
-                onPress={() => {
-                  dispatch(setModalVisible(false));
-                }}
-                disabled={!destination}
-                style={[
-                  tw`${!destination && "opacity-0"}`,
-                  {
-                    backgroundColor: COLORS.translucent,
-                    padding: SIZES.small,
-                    borderRadius: SIZES.xxl,
-                  },
-                ]}
-              >
-                <Text style={{ color: COLORS.white }}>Hide Details</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      )}
+      {modalVisible === true && <NavDetailsModal />}
     </View>
   );
 };
