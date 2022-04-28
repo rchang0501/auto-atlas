@@ -28,7 +28,6 @@ const Maps = () => {
   React.useEffect(
     () =>
       navigation.addListener("beforeRemove", (e) => {
-        dispatch(setOrigin(null));
         dispatch(setDestination(null));
         dispatch(setModalVisible(false));
       }),
@@ -107,21 +106,47 @@ const Maps = () => {
             bottom: -50,
             right: 0,
             left: 0,
-            height: 280,
+            height: 320,
             backgroundColor: COLORS.white,
             borderRadius: SIZES.medium,
           }}
         >
           <View style={{ padding: SIZES.font }}>
-            <Text>Travel Details</Text>
-            <TouchableOpacity
-              onPress={() => {
-                dispatch(setModalVisible(false));
+            <Text
+              style={{
+                textAlign: "center",
+                fontFamily: FONTS.semiBold,
+                fontSize: SIZES.medium,
+                paddingBottom: SIZES.small,
               }}
-              style={{ backgroundColor: COLORS.primary }}
             >
-              <Text style={{ color: COLORS.white }}>hide details</Text>
-            </TouchableOpacity>
+              Travel Details
+            </Text>
+            <View style ={{height: 130}} />
+            <View
+              style={{
+                width: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <TouchableOpacity
+                onPress={() => {
+                  dispatch(setModalVisible(false));
+                }}
+                disabled={!destination}
+                style={[
+                  tw`${!destination && "opacity-0"}`,
+                  {
+                    backgroundColor: COLORS.translucent,
+                    padding: SIZES.small,
+                    borderRadius: SIZES.xxl,
+                  },
+                ]}
+              >
+                <Text style={{ color: COLORS.white }}>Hide Details</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       )}
