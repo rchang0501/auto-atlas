@@ -3,7 +3,11 @@ import React from "react";
 import { FONTS, COLORS, SIZES } from "../constants";
 import { Icon } from "react-native-elements";
 import { useDispatch } from "react-redux";
-import { setDestination, setModalVisible } from "../slices/navSlice";
+import {
+  setDestination,
+  setModalVisible,
+  setTravelTimeInformation,
+} from "../slices/navSlice";
 
 const data = [
   {

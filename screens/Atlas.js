@@ -13,6 +13,7 @@ import {
   setDestination,
   setModalVisible,
   setOrigin,
+  setTravelTimeInformation,
 } from "../slices/navSlice";
 import { useNavigation } from "@react-navigation/native";
 
@@ -26,6 +27,7 @@ const Atlas = () => {
     () =>
       navigation.addListener("beforeRemove", (e) => {
         dispatch(setDestination(null));
+        dispatch(setTravelTimeInformation(null));
         dispatch(setModalVisible(false));
       }),
     [navigation]

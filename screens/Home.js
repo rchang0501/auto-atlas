@@ -117,6 +117,7 @@ const toInputBoxStyles = StyleSheet.create({
     fontFamily: FONTS.regular,
     backgroundColor: COLORS.translucent,
     color: COLORS.white,
+    borderRadius: SIZES.medium,
   },
   listView: {
     color: COLORS.white,

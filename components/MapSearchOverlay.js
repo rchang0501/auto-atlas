@@ -4,7 +4,7 @@ import { COLORS, FONTS, SIZES } from "../constants";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_APIKEY } from "@env";
 import { useDispatch } from "react-redux";
-import { setDestination } from "../slices/navSlice";
+import { setDestination, setTravelTimeInformation } from "../slices/navSlice";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { setModalVisible } from "../slices/navSlice";
 import NavFavsAlt from "./NavFavsAlt";
@@ -67,6 +67,7 @@ const toInputBoxStyles = StyleSheet.create({
     fontFamily: FONTS.regular,
     backgroundColor: COLORS.translucent,
     color: COLORS.white,
+    borderRadius: SIZES.medium,
   },
   listView: {
     color: COLORS.white,
