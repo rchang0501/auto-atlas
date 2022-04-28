@@ -49,7 +49,6 @@ const Atlas = () => {
       >
         <MapSearchOverlay />
       </View>
-
       <View
         style={{
           zIndex: 0,
