@@ -1,14 +1,7 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, FlatList, TouchableOpacity } from "react-native";
 import React from "react";
 import { FONTS, COLORS, SIZES } from "../constants";
 import { Icon } from "react-native-elements";
-import tw from "tailwind-react-native-classnames";
 import { useDispatch } from "react-redux";
 import { setDestination, setModalVisible } from "../slices/navSlice";
 
@@ -87,5 +80,3 @@ const NavFavsAlt = () => {
 };
 
 export default NavFavsAlt;
-
-const styles = StyleSheet.create({});
