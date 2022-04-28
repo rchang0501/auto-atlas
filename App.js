@@ -4,7 +4,7 @@ import { useFonts } from "expo-font";
 import { Provider } from "react-redux";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "react-native-gesture-handler";
-
+import { KeyboardAvoidingView, Platform } from "react-native";
 import { Home, Maps } from "./screens";
 import { store } from "./store";
 
@@ -33,13 +33,19 @@ const App = () => {
     <Provider store={store}>
       <NavigationContainer theme={theme}>
         <SafeAreaProvider>
-          <Stack.Navigator
-            screenOptions={{ headerShown: false }}
-            initialRouteName="Home"
+          <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={{ flex: 1 }}
+            keyboardVerticalOffset={Platform.OS === "ios" ? -100 : -100}
           >
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Maps" component={Maps} />
-          </Stack.Navigator>
+            <Stack.Navigator
+              screenOptions={{ headerShown: false }}
+              initialRouteName="Home"
+            >
+              <Stack.Screen name="Home" component={Home} />
+              <Stack.Screen name="Maps" component={Maps} />
+            </Stack.Navigator>
+          </KeyboardAvoidingView>
         </SafeAreaProvider>
       </NavigationContainer>
     </Provider>
