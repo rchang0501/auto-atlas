@@ -7,9 +7,9 @@ import { useDispatch } from "react-redux";
 import { setDestination } from "../slices/navSlice";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { setModalVisible } from "../slices/navSlice";
-import NavFavsAlt from "../components/NavFavsAlt";
+import NavFavsAlt from "./NavFavsAlt";
 
-const Destination = () => {
+const MapSearchOverlay = () => {
   const dispatch = useDispatch();
 
   return (
@@ -55,7 +55,7 @@ const Destination = () => {
   );
 };
 
-export default Destination;
+export default MapSearchOverlay;
 
 const toInputBoxStyles = StyleSheet.create({
   container: {

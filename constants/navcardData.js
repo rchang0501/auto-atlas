@@ -5,13 +5,13 @@ const navCardData = [
         id: "123",
         title: "Start a trip", 
         image: assets.trip, 
-        screen: "Maps", 
+        screen: "Atlas", 
     },
     {
         id: "456",
         title: "Find a charging station", 
         image: assets.charging, 
-        screen: "Maps", 
+        screen: "Atlas", 
     },
 ]
 

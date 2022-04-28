@@ -45,7 +45,7 @@ const NavFavs = () => {
             onPress={() => {
               dispatch(setOrigin(item.destination));
               dispatch(setDestination(null));
-              navigation.navigate("Maps");
+              navigation.navigate("Atlas");
             }}
             style={tw`flex-row items-center p-3`}
           >

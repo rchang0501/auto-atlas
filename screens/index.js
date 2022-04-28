@@ -1,5 +1,4 @@
 import Home from "./Home";
-import Maps from "./Maps";
-import Destination from "./Destination";
+import Atlas from "./Atlas";
 
-export {Home, Maps, Destination}
+export { Home, Atlas };

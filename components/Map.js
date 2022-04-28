@@ -10,17 +10,23 @@ const Map = () => {
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
   const mapRef = useRef(null);
-  const destinationRef = useRef(null);
 
   useEffect(() => {
-    if (!origin || !destination || !destinationRef) return;
-
-    destinationRef.current.title = "Destination!";
+    if (!origin || !destination) return;
 
     if (Platform.OS === "ios") {
-      mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
-        edgePadding: { top: 100, right: 100, bottom: 100, left: 100 },
-      });
+      mapRef.current.fitToCoordinates(
+        [
+          { latitude: origin.location.lat, longitude: origin.location.lng },
+          {
+            latitude: destination.location.lat,
+            longitude: destination.location.lng,
+          },
+        ],
+        {
+          edgePadding: { top: 125, right: 50, bottom: 175, left: 50 },
+        }
+      );
     } else {
       mapRef.current.fitToCoordinates(
         [
@@ -31,11 +37,11 @@ const Map = () => {
           },
         ],
         {
-          edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+          edgePadding: { top: 50, right: 50, bottom: 150, left: 50 },
         }
       );
     }
-  }, [origin, destination, destinationRef]);
+  }, [origin, destination]);
 
   return (
     <View style={{ flex: 1 }}>
@@ -75,7 +81,6 @@ const Map = () => {
 
           {destination?.location && (
             <Marker
-              ref={destinationRef}
               coordinate={{
                 latitude: destination.location.lat,
                 longitude: destination.location.lng,

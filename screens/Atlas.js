@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "tailwind-react-native-classnames";
 import Map from "../components/Map";
 import NavDetailsModal from "../components/NavDetailsModal";
-import Destination from "./Destination";
+import MapSearchOverlay from "../components/MapSearchOverlay";
 import { COLORS, SIZES, FONTS } from "../constants";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -16,7 +16,7 @@ import {
 } from "../slices/navSlice";
 import { useNavigation } from "@react-navigation/native";
 
-const Maps = () => {
+const Atlas = () => {
   const dispatch = useDispatch();
   const modalVisible = useSelector(selectModalVisible);
   const destination = useSelector(selectDestination);
@@ -44,11 +44,10 @@ const Maps = () => {
           right: 0,
           left: 0,
           height: 340,
+          flex: 1,
         }}
       >
-        <View style={{ flex: 1 }}>
-          <Destination />
-        </View>
+        <MapSearchOverlay />
       </View>
 
       <View
@@ -76,7 +75,9 @@ const Maps = () => {
             },
           ]}
         >
-          <Text style={{ color: COLORS.white, fontFamily: FONTS.medium }}>Show Details</Text>
+          <Text style={{ color: COLORS.white, fontFamily: FONTS.medium }}>
+            Show Details
+          </Text>
         </TouchableOpacity>
       </View>
       {modalVisible === true && <NavDetailsModal />}
@@ -84,4 +85,4 @@ const Maps = () => {
   );
 };
 
-export default Maps;
+export default Atlas;
