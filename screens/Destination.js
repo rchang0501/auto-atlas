@@ -19,6 +19,9 @@ const Destination = () => {
           <GooglePlacesAutocomplete
             placeholder="Where to?"
             textInputProps={{
+              onPressIn: () => {
+                dispatch(setModalVisible(false));
+              },
               selectionColor: COLORS.white,
               placeholderTextColor: COLORS.white,
             }}

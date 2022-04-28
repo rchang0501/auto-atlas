@@ -1,6 +1,7 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
 import { assets, FONTS, COLORS, SIZES } from "../constants";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const HomeHeader = () => {
   return (

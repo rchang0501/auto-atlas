@@ -1,13 +1,15 @@
 import homeBkg from "../assets/images/background.png";
-import battery from "../assets/images/battery.png"
-import trip from "../assets/images/trip.webp"
-import charging from "../assets/images/charging.png"
-import modelx from "../assets/images/modelx.png"
+import battery from "../assets/images/battery.png";
+import trip from "../assets/images/trip.webp";
+import charging from "../assets/images/charging.png";
+import modelx from "../assets/images/modelx.png";
+import bkgCar from "../assets/images/bkgCar.png";
 
 export default {
-    homeBkg,
-    battery, 
-    trip, 
-    charging, 
-    modelx, 
-}
+  homeBkg,
+  battery,
+  trip,
+  charging,
+  modelx,
+  bkgCar,
+};

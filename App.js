@@ -36,7 +36,7 @@ const App = () => {
           <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={{ flex: 1 }}
-            keyboardVerticalOffset={Platform.OS === "ios" ? -100 : -100}
+            keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 0}
           >
             <Stack.Navigator
               screenOptions={{ headerShown: false }}

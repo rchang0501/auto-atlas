@@ -1,12 +1,6 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, FlatList, TouchableOpacity } from "react-native";
 import React from "react";
-import { assets, FONTS, COLORS, SIZES } from "../constants";
+import { FONTS, COLORS, SIZES } from "../constants";
 import { Icon } from "react-native-elements";
 import tw from "tailwind-react-native-classnames";
 import { useDispatch } from "react-redux";
@@ -92,5 +86,3 @@ const NavFavs = () => {
 };
 
 export default NavFavs;
-
-const styles = StyleSheet.create({});
