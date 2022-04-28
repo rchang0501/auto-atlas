@@ -3,11 +3,8 @@ import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "tailwind-react-native-classnames";
 import Map from "../components/Map";
-import MapView from "react-native-maps";
-import NavDetails from "./NavDetails";
 import Destination from "./Destination";
 import { COLORS, SIZES, FONTS } from "../constants";
-import { createStackNavigator } from "@react-navigation/stack";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectDestination,
@@ -19,7 +16,6 @@ import {
 import { useNavigation } from "@react-navigation/native";
 
 const Maps = () => {
-  const Stack = createStackNavigator();
   const dispatch = useDispatch();
   const modalVisible = useSelector(selectModalVisible);
   const destination = useSelector(selectDestination);
@@ -50,22 +46,7 @@ const Maps = () => {
         }}
       >
         <View style={{ flex: 1 }}>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="Destination"
-              component={Destination}
-              options={{
-                headerShown: false,
-              }}
-            />
-            <Stack.Screen
-              name="NavDetails"
-              component={NavDetails}
-              options={{
-                headerShown: false,
-              }}
-            />
-          </Stack.Navigator>
+          <Destination />
         </View>
       </View>
 
@@ -122,7 +103,7 @@ const Maps = () => {
             >
               Travel Details
             </Text>
-            <View style ={{height: 130}} />
+            <View style={{ height: 130 }} />
             <View
               style={{
                 width: "100%",

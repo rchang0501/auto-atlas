@@ -2,8 +2,7 @@ import { Text, View, FlatList, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import tw from "tailwind-react-native-classnames";
 
-import { COLORS, navCardData, FONTS, SIZES, SHADOWS } from "../constants";
-import { Icon } from "react-native-elements";
+import { COLORS, navCardData, FONTS, SIZES } from "../constants";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { selectOrigin, setOrigin } from "../slices/navSlice";
