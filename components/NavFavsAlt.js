@@ -51,11 +51,11 @@ const NavFavsAlt = () => {
           }}
           style={{
             marginRight: SIZES.base,
-            backgroundColor: COLORS.gray,
+            backgroundColor: COLORS.white,
             paddingHorizontal: SIZES.font,
             paddingVertical: SIZES.small,
             borderRadius: SIZES.extraLarge,
-            elevation: 1
+            elevation: 1,
           }}
         >
           <View
@@ -68,7 +68,6 @@ const NavFavsAlt = () => {
             <Icon
               name={item.icon}
               type="ionicon"
-              color='white'
               size={SIZES.small}
               style={{ marginRight: 6 }}
             />
@@ -76,7 +75,6 @@ const NavFavsAlt = () => {
               style={{
                 fontFamily: FONTS.semiBold,
                 fontSize: SIZES.small,
-                color: COLORS.white
               }}
             >
               {item.name}

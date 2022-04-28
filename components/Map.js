@@ -15,9 +15,6 @@ const Map = () => {
   useEffect(() => {
     if (!origin || !destination || !destinationRef) return;
 
-    console.log(origin);
-    console.log(destination);
-
     destinationRef.current.title = "Destination!";
 
     if (Platform.OS === "ios") {
@@ -42,52 +39,54 @@ const Map = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <MapView
-        ref={mapRef}
-        mapType="mutedStandard"
-        style={{ flex: 1 }}
-        initialRegion={{
-          latitude: origin.location.lat,
-          longitude: origin.location.lng,
-          latitudeDelta: 0.005,
-          longitudeDelta: 0.005,
-        }}
-      >
-        {origin && destination && (
-          <MapViewDirections
-            origin={origin.description}
-            destination={destination.description}
-            apikey={GOOGLE_MAPS_APIKEY}
-            strokeWidth={3}
-            strokeColor="black"
-          />
-        )}
+      {origin && (
+        <MapView
+          ref={mapRef}
+          mapType="mutedStandard"
+          style={{ flex: 1 }}
+          initialRegion={{
+            latitude: origin.location.lat,
+            longitude: origin.location.lng,
+            latitudeDelta: 0.005,
+            longitudeDelta: 0.005,
+          }}
+        >
+          {origin && destination && (
+            <MapViewDirections
+              origin={origin.description}
+              destination={destination.description}
+              apikey={GOOGLE_MAPS_APIKEY}
+              strokeWidth={3}
+              strokeColor="black"
+            />
+          )}
 
-        {origin?.location && (
-          <Marker
-            coordinate={{
-              latitude: origin.location.lat,
-              longitude: origin.location.lng,
-            }}
-            title="Origin"
-            description={origin.description}
-            identifier="origin"
-          />
-        )}
+          {origin?.location && (
+            <Marker
+              coordinate={{
+                latitude: origin.location.lat,
+                longitude: origin.location.lng,
+              }}
+              title="Origin"
+              description={origin.description}
+              identifier="origin"
+            />
+          )}
 
-        {destination?.location && (
-          <Marker
-            ref={destinationRef}
-            coordinate={{
-              latitude: destination.location.lat,
-              longitude: destination.location.lng,
-            }}
-            title="Destination"
-            description={destination.description}
-            identifier="destination"
-          />
-        )}
-      </MapView>
+          {destination?.location && (
+            <Marker
+              ref={destinationRef}
+              coordinate={{
+                latitude: destination.location.lat,
+                longitude: destination.location.lng,
+              }}
+              title="Destination"
+              description={destination.description}
+              identifier="destination"
+            />
+          )}
+        </MapView>
+      )}
     </View>
   );
 };

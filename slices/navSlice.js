@@ -26,8 +26,12 @@ export const navSlice = createSlice({
   },
 });
 
-export const { setOrigin, setDestination, setTravelTimeInformation, setModalVisible } =
-  navSlice.actions;
+export const {
+  setOrigin,
+  setDestination,
+  setTravelTimeInformation,
+  setModalVisible,
+} = navSlice.actions;
 
 // Selectors - pull information from the data layer
 export const selectOrigin = (state) => state.nav.origin;

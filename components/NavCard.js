@@ -5,12 +5,13 @@ import tw from "tailwind-react-native-classnames";
 import { COLORS, navCardData, FONTS, SIZES, SHADOWS } from "../constants";
 import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
-import { useSelector } from "react-redux";
-import { selectOrigin } from "../slices/navSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectOrigin, setOrigin } from "../slices/navSlice";
 
 const NavCard = () => {
   const navigation = useNavigation();
   const origin = useSelector(selectOrigin);
+  const dispatch = useDispatch();
 
   return (
     <View style={{ justifyContent: "space-between", alignItems: "center" }}>
