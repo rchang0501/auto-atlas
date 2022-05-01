@@ -1,5 +1,5 @@
 # Auto Atlas
-React Native automotive travel assistant application. Leverages Expo, Redux for state management, Tailwind React Native Classnames for styling, and Google Directions, Places, &amp; Distance Matrix APIs
+React Native automotive travel assistant application. Leverages Expo framework, Redux for state management, Tailwind React Native for styling, and Google Directions, Places, & Distance Matrix APIs
 
 <p align="center">
   <img src="/demo/icon.png" alt="auto_atlas_icon" width="100" height="100"/>
