@@ -2,26 +2,16 @@ import { View, Text } from "react-native";
 import React from "react";
 import { COLORS, SIZES, FONTS } from "../constants";
 
-const TravelDetailsInfoText = ({ property, propertyTitle }) => {
+const TravelDetailsInfoText = ({ property }) => {
   return (
-    <View style={{ flexDirection: "row", paddingBottom: SIZES.small }}>
-      <Text
-        style={{
-          fontFamily: FONTS.semiBold,
-          fontSize: SIZES.font,
-        }}
-      >
-        {propertyTitle}
-      </Text>
-      <Text
-        style={{
-          fontFamily: FONTS.regular,
-          fontSize: SIZES.font,
-        }}
-      >
-        {property && property.text !== null ? property.text : "unavailable"}
-      </Text>
-    </View>
+    <Text
+      style={{
+        fontFamily: FONTS.bold,
+        fontSize: SIZES.extraLarge-3,
+      }}
+    >
+      {property && property.text !== null ? property.text : "...loading"}
+    </Text>
   );
 };
 

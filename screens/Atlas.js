@@ -1,4 +1,10 @@
-import { View, Text, TouchableOpacity, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  Platform,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "tailwind-react-native-classnames";
@@ -22,6 +28,15 @@ const Atlas = () => {
   const modalVisible = useSelector(selectModalVisible);
   const destination = useSelector(selectDestination);
   const navigation = useNavigation();
+
+  const [detailsText, setDetailsText] = useState("Show Details");
+  useEffect(() => {
+    if (modalVisible) {
+      setDetailsText("Hide Details");
+    } else {
+      setDetailsText("Show Details");
+    }
+  }, [modalVisible]);
 
   React.useEffect(
     () =>
@@ -51,36 +66,70 @@ const Atlas = () => {
       >
         <MapSearchOverlay />
       </View>
-      <View
-        style={{
-          zIndex: 0,
-          flexDirection: "row",
-          position: "absolute",
-          bottom: 50,
-          width: "100%",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <TouchableOpacity
-          onPress={() => {
-            dispatch(setModalVisible(true));
+      {Platform.OS === "android" ? (
+        <View
+          style={{
+            zIndex: 2,
+            flexDirection: "row",
+            position: "absolute",
+            bottom: 24,
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
           }}
-          disabled={!destination}
-          style={[
-            tw`${!destination && "opacity-0"}`,
-            {
-              backgroundColor: COLORS.translucent,
-              padding: SIZES.small,
-              borderRadius: SIZES.xxl,
-            },
-          ]}
         >
-          <Text style={{ color: COLORS.white, fontFamily: FONTS.medium }}>
-            Show Details
-          </Text>
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity
+            onPress={() => {
+              dispatch(setModalVisible(!modalVisible));
+            }}
+            disabled={!destination}
+            style={[
+              tw`${!destination && "opacity-0"}`,
+              {
+                backgroundColor: COLORS.translucent,
+                padding: SIZES.small,
+                borderRadius: SIZES.xxl,
+              },
+            ]}
+          >
+            <Text style={{ color: COLORS.white, fontFamily: FONTS.medium }}>
+              {detailsText}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <View
+          style={{
+            zIndex: 2,
+            flexDirection: "row",
+            position: "absolute",
+            bottom: 40,
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <TouchableOpacity
+            onPress={() => {
+              dispatch(setModalVisible(!modalVisible));
+            }}
+            disabled={!destination}
+            style={[
+              tw`${!destination && "opacity-0"}`,
+              {
+                backgroundColor: COLORS.translucent,
+                padding: SIZES.small,
+                borderRadius: SIZES.xxl,
+              },
+            ]}
+          >
+            <Text style={{ color: COLORS.white, fontFamily: FONTS.medium }}>
+              {detailsText}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )}
+
       {modalVisible === true && <NavDetailsModal />}
     </View>
   );
